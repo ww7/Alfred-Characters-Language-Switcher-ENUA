@@ -1,7 +1,7 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine/)
 
 ## Description
-<img width="150" height="150" align="right" src="https://raw.githubusercontent.com/ww7/alfred-keyboard-language-switcher-ua/master/icon.png" alt="alfred-keyboard-language-switcher-ua">
+<img width="150" height="150" align="right" src="https://raw.githubusercontent.com/ww7/Alfred-Characters-Language-Switcher-ENUA/master/icon.png" alt="alfred-keyboard-language-switcher-ua">
 
 Alfred Workflow, which uses Applescript to convert language of selected text. Punto Switcher alternative.
 
@@ -12,7 +12,7 @@ Script switches the language (input source) after conversion (via default macOS 
 Based on Applescript by Jeffrey Smith 2016.
 
 ## How to install?
-1. Download [.workflow](https://github.com/ww7/alfred-keyboard-language-switcher-ua/blob/main/Characters%20language%20switcher%20(En-Ua).alfredworkflow?raw=true) file and double click to add it to Alfred. 
+1. Download [.workflow](https://github.com/ww7/Alfred-Characters-Language-Switcher-ENUA/blob/main/Characters%20language%20switcher%20(En-Ua).alfredworkflow?raw=true) file and double click to add it to Alfred. 
 2. Set your preferred hotkey.
 
 ## Known limitation
