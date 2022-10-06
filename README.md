@@ -3,7 +3,8 @@
 ## Description
 <img width="150" height="150" align="right" src="https://raw.githubusercontent.com/ww7/Alfred-Characters-Language-Switcher-ENUA/master/icon.png" alt="alfred-keyboard-language-switcher-ua">
 
-Alfred Workflow, which uses Applescript to convert language of selected text. Punto Switcher alternative.
+Alfred Workflow, which uses Applescript to convert language of selected text. 
+Punto Switcher alternative.
 
 For Ukrainian to English and English to Ukrainian conversion. 
 
