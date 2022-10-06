@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.ww7.charslangswitcherua</string>
+	<key>connections</key>
+	<dict>
+		<key>81361377-35E3-426B-BB86-95924C7EAF83</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AAE2193C-E6C1-4A1C-8A17-774AF8868DCF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>AAE2193C-E6C1-4A1C-8A17-774AF8868DCF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C6C2A052-231A-4088-8BE1-AB8C934102AA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C6C2A052-231A-4088-8BE1-AB8C934102AA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5A71E402-A8B6-42CC-B82A-E2355084D9BE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jeffrey Smith, j2thex, ww7</string>
+	<key>description</key>
+	<string>Switches selected characters to another language (En↔Ua)</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Characters language switcher (En-Ua)</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>42</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>\</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>81361377-35E3-426B-BB86-95924C7EAF83</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{clipboard:2}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>5A71E402-A8B6-42CC-B82A-E2355084D9BE</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+
+
+--creates 2 language lists
+set firstChar to text 1 thru 1 of q
+set enlist to "qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM&lt;&gt;?#$^&amp;@"
+set ualist to "йцукенгшщзхїфівапролджєячсмитьбю.ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ,№;:?\""
+
+
+--get first character compare to enlist
+set matches to offset of firstChar in enlist
+
+
+--decides english to ukrainian or ukrainian to english
+set uatoen to true
+
+if (matches &gt; 0) then
+	--English to Ukrainian list swap
+	set uatoen to false
+	set outputlist to ualist
+	set inputlist to enlist		
+end if
+
+if uatoen then	
+	--Ukrainian to English list swap
+	set outputlist to enlist
+	set inputlist to ualist
+end if
+
+--сonversion
+set newString to {}
+considering case
+repeat with theChar in q
+	set o to offset of theChar in inputlist
+	if o is 0 then
+		set end of newString to contents of theChar
+	else
+		set end of newString to character o of outputlist
+	end if
+end repeat
+end considering 
+
+
+set the clipboard to newString as string
+--keystroke command+v - paste from clipboard
+tell application "System Events" to key code 9 using command down
+
+
+--switch language
+tell application "System Events" to key code 49 using {control down}
+
+	
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>AAE2193C-E6C1-4A1C-8A17-774AF8868DCF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>seconds</key>
+				<string>0.2</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>C6C2A052-231A-4088-8BE1-AB8C934102AA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>5A71E402-A8B6-42CC-B82A-E2355084D9BE</key>
+		<dict>
+			<key>xpos</key>
+			<real>600</real>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>81361377-35E3-426B-BB86-95924C7EAF83</key>
+		<dict>
+			<key>xpos</key>
+			<real>65</real>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>AAE2193C-E6C1-4A1C-8A17-774AF8868DCF</key>
+		<dict>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>C6C2A052-231A-4088-8BE1-AB8C934102AA</key>
+		<dict>
+			<key>xpos</key>
+			<real>480</real>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.7</string>
+	<key>webaddress</key>
+	<string>https://github.com/ww7/alfred-keyboard-language-switcher-ua</string>
+</dict>
+</plist>
